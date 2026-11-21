@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Breeding Project - Types, Attributes & Image Requirements</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f1e8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #4a2c1a, #8b5a2b);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-space {
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a2c1a;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            border: 3px solid #d4a373;
+        }
+
+        .site-title {
+            font-size: 24px;
+            margin-left: 15px;
+        }
+
+        .site-title span {
+            color: #d4a373;
+        }
+
+        /* NAVIGATION */
+        nav {
+            background-color: #3a2214;
+            padding: 12px 0;
+            position: sticky;
+            top: 110px;
+            z-index: 999;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        nav ul li a:hover {
+            background-color: #d4a373;
+            color: #3a2214;
+        }
+
+        nav ul li a .shortcut {
+            font-size: 10px;
+            background: rgba(255,255,255,0.2);
+            padding: 2px 5px;
+            border-radius: 3px;
+            margin-left: 5px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(74,44,26,0.7), rgba(74,44,26,0.7)), 
+                        url('https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1600') center/cover;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            color: #4a2c1a;
+            font-size: 36px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #d4a373;
+            padding-bottom: 10px;
+        }
+
+        section h3 {
+            color: #8b5a2b;
+            font-size: 24px;
+            margin: 25px 0 15px;
+        }
+
+        section p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 16px;
+        }
+
+        section ul {
+            margin: 15px 0 15px 30px;
+        }
+
+        section ul li {
+            margin-bottom: 8px;
+        }
+
+        /* IMAGE PLACEHOLDERS */
+        .image-placeholder {
+            background: linear-gradient(135deg, #e8dcc4, #d4a373);
+            border: 1px dashed #8b5a2b;
+            border-radius: 60px;
+            padding: 50px 50px;
+            text-align: center;
+            margin: 25px 0;
+            color: #4a2c1a;
+            font-weight: bold;
+            min-height: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-placeholder .icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .image-placeholder .caption {
+            font-size: 14px;
+            font-style: italic;
+            font-weight: normal;
+            margin-top: 10px;
+            color: #3a2214;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin: 30px 0;
+        }
+
+        /* BREED CARDS */
+        .breed-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .breed-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .breed-card .image-placeholder {
+            min-height: 200px;
+            margin: 0;
+            border: none;
+            border-radius: 0;
+        }
+
+        .breed-card .content {
+            padding: 20px;
+        }
+
+        .breed-card h4 {
+            color: #4a2c1a;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        /* VIDEO SECTION */
+        .video-container {
+            background: #3a2214;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .video-placeholder {
+            background: #1a0f08;
+            border: 3px dashed #d4a373;
+            padding: 80px 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 700px;
+            color: #d4a373;
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            background: linear-gradient(135deg, #4a2c1a, #8b5a2b);
+            color: white;
+            padding: 60px 40px;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            color: white;
+            border-bottom-color: #d4a373;
+        }
+
+        .contact-info p {
+            margin: 12px 0;
+            font-size: 16px;
+        }
+
+        .contact-info a {
+            color: #d4a373;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .profile-picture {
+            width: 200px;
+            height: 200px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a2c1a;
+            font-weight: bold;
+            border: 5px solid #d4a373;
+            margin: 0 auto 20px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            background: #d4a373;
+            color: #3a2214;
+            padding: 10px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
+        /* BARCODE SECTION */
+        .barcode-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .barcode-placeholder {
+            background: white;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1a0f08;
+            color: #d4a373;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .site-title {
+                margin: 10px 0 0 0;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+            .contact-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            nav ul li {
+                margin: 5px 8px;
+            }
+            section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER WITH LOGO SPACE -->
+    <header>
+        <div style="display: flex; align-items: center;">
+            <div class="logo-space">YOUR<br>LOGO</div>
+            <div class="site-title">Dog Breeding <span>Project</span></div>
+        </div>
+        <div style="font-size: 14px;">By AMUND OLAYINKA IYIOLA</div>
+    </header>
+
+    <!-- NAVIGATION WITH SHORTCUT KEYS -->
+    <nav>
+        <ul>
+            <li><a href="#home" accesskey="1">Home <span class="shortcut">Alt+1</span></a></li>
+            <li><a href="#about" accesskey="2">About <span class="shortcut">Alt+2</span></a></li>
+            <li><a href="#breeds" accesskey="3">Breeds <span class="shortcut">Alt+3</span></a></li>
+            <li><a href="#images" accesskey="4">Images <span class="shortcut">Alt+4</span></a></li>
+            <li><a href="#video" accesskey="5">Video <span class="shortcut">Alt+5</span></a></li>
+            <li><a href="#practice" accesskey="6">Practice <span class="shortcut">Alt+6</span></a></li>
+            <li><a href="#ethics" accesskey="7">Ethics <span class="shortcut">Alt+7</span></a></li>
+            <li><a href="#contact" accesskey="8">Contact <span class="shortcut">Alt+8</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <h1>The Complete Guide to Dog Breeding</h1>
+        <p>Exploring Types, Attributes, and Professional Image Requirements for Canine Breeds</p>
+    </section>
+
+    <!-- CHAPTER 1: ABOUT / INTRODUCTION -->
+    <section id="about">
+        <h2>Chapter 1: Introduction</h2>
+        <p>The domestication of the dog (<em>Canis lupus familiaris</em>) represents one of the most significant milestones in human history, dating back thousands of years. Initially bred for survival tasks such as hunting, guarding, and herding, dogs have since evolved into multifaceted companions, working animals, and show competitors.</p>
+        <p>The practice of dog breeding has transitioned from natural survival selection to highly structured artificial selection. Today, breeding is guided by strict genetic principles and established breed standards set by global kennel clubs.</p>
+
+        <div class="image-placeholder">
+            <div class="icon">🐕</div>
+            <div>[ IMAGE SPACE: Early dog domestication / wolf-to-dog evolution ]
+                <img src="canis family.jpg" style="width: 50%; height: auto;" alt="Evolution from wolf to domestic dog">
+            </div>
+            <div class="caption">Figure 1.1: The evolutionary journey from wild wolves to domestic dogs</div>
+        </div>
+
+        <h3>Purpose of the Project</h3>
+        <p>This project provides a comprehensive overview of dog breeding, exploring the various types of dogs, their distinct physical and behavioral attributes, and the standardized image requirements necessary for their proper visual documentation.</p>
+
+        <h3>Objectives</h3>
+        <ul>
+            <li>Examine the history, evolution, and fundamental principles of dog breeding and genetics</li>
+            <li>Classify the major groups of dog breeds and detail their specific attributes</li>
+            <li>Establish standard image requirements for photographing dog breeds accurately</li>
+            <li>Highlight practical aspects of breeding management and puppy care</li>
+            <li>Discuss ethical considerations and responsible breeding practices</li>
+        </ul>
+    </section>
+
+    <!-- CHAPTER 2: OVERVIEW OF DOG BREEDING -->
+    <section id="overview">
+        <h2>Chapter 2: Overview of Dog Breeding</h2>
+        <p>Dog breeding is the intentional mating of dogs to maintain or produce specific qualities. The modern concept began to take shape during the Victorian era in the 19th century, with the establishment of formal dog shows and kennel clubs.</p>
+
+        <h3>Principles of Genetics and Heredity</h3>
+        <ul>
+            <li><strong>Dominant and Recessive Traits:</strong> Some genes express themselves with just one copy, while recessive traits require two copies.</li>
+            <li><strong>Polygenic Traits:</strong> Characteristics like size and temperament are controlled by multiple genes.</li>
+            <li><strong>Linebreeding vs. Inbreeding:</strong> Careful management is required to avoid genetic defects.</li>
+            <li><strong>Pedigree Analysis:</strong> Family trees help track inheritance and calculate genetic diversity.</li>
+        </ul>
+
+        <div class="image-placeholder">
+            <div class="icon">🧬</div>
+            <div>[ IMAGE SPACE: Dog pedigree chart / genetics diagram ]</div>
+            <img src="pedigree chart.jpg" style="width: 60%; height: auto;" alt="Pedigree chart showing dog genetics">
+            <div class="caption">Figure 2.1: Understanding canine genetics through pedigree analysis</div>
+        </div>
+
+        <h3>Purpose of Dog Breeding</h3>
+        <ul>
+            <li><strong>Companion Breeding:</strong> For affection and adaptability to home life</li>
+            <li><strong>Working Breeding:</strong> For strength, intelligence, and endurance</li>
+            <li><strong>Show Breeding:</strong> To preserve and perfect the breed standard</li>
+            <li><strong>Guard and Protection:</strong> For courage, loyalty, and territorial instinct</li>
+        </ul>
+    </section>
+
+    <!-- CHAPTER 3: TYPES OF DOGS -->
+    <section id="breeds">
+        <h2>Chapter 3: Types of Dogs and Their Attributes</h2>
+        <p>Dog breeds are classified into major groups based on their original function. Each group has distinct physical attributes, temperaments, and uses.</p>
+
+        <div class="image-grid">
+            <!-- Sporting -->
+            <div class="breed-card">
+                <div class="image-placeholder">
+                    <div class="icon">🎯</div>
+                    <div>[ IMAGE: Sporting Dog ]</div>
+                    <img src="sporting dog.jpg" alt="Sporting Dog">        
+                </div>
+                <div class="content">
+                    <h4>Sporting Group</h4>
+                    <p><strong>Examples:</strong> Labrador, Golden Retriever, Pointer</p>
+                    <p><strong>Attributes:</strong> Athletic, water-repellent coats, eager to please</p>
+                    <p><strong>Uses:</strong> Hunting assistance, retrieving, family companions</p>
+                </div>
+            </div>
+
+            <!-- Hound -->
+            <div class="breed-card">
+                <div class="image-placeholder">
+                    <div class="icon">🐺</div>
+                    <div>[ IMAGE: Hound Dog ]</div>
+                    <img src="hound dog.jpg" alt="Hound Dog">
+                </div>
+                <div class="content">
+                    <h4>Hound Group</h4>
+                    <p><strong>Examples:</strong> Beagle, Bloodhound, Greyhound</p>
+                    <p><strong>Attributes:</strong> Exceptional smell or sight, vocal, independent</p>
+                    <p><strong>Uses:</strong> Tracking, hunting, coursing fast prey</p>
+                </div>
+            </div>
+
+            <!-- Working -->
+            <div class="breed-card">
+                <div class="image-placeholder">
+                    <div class="icon">💪</div>
+                    <div>[ IMAGE: Working Dog ]</div>
+                    <img src="working dog.jpg" alt="Working Dog">
+                </div>
+                <div class="content">
+                    <h4>Working Group</h4>
+                    <p><strong>Examples:</strong> Boxer, Rottweiler, Great Dane</p>
+                    <p><strong>Attributes:</strong> Large, muscular, intelligent, protective</p>
+                    <p><strong>Uses:</strong> Guarding, sled pulling, police work</p>
+                </div>
+            </div>
+
+            <!-- Terrier -->
+            <div class="breed-card">
+                <div class="image-placeholder">
+                    <div class="icon">🦊</div>
+                    <div>[ IMAGE: Terrier Dog ]</div>
+                </div>
+                <div class="content">
+                    <h4>Terrier Group</h4>
+                    <p><strong>Examples:</strong> Jack Russell, Bull Terrier, Schnauzer</p>
+                    <p><strong>Attributes:</strong> Feisty, energetic, wiry coat</p>
+                    <p><strong>Uses:</strong> Hunting vermin, digging into burrows</p>
+                </div>
+            </div>
+
+            <!-- Toy -->
+            <div class="breed-card">
+                <div class="image-placeholder">
+                    <div class="icon">🎀</div>
+                    <div>[ IMAGE: Toy Dog ]</div>
+                </div>
+                <div class="content">
+                    <h4>Toy Group</h4>
+                    <p><strong>Examples:</strong> Chihuahua, Pomeranian, Pug</p>
+                    <p><strong>Attributes:</strong> Small, affectionate, expressive eyes</p>
+                    <p><strong>Uses:</strong> Companionship, apartment living</p>
+                </div>
+            </div>
+
+            <!-- Non-Sporting -->
+            <div class="breed-card">
+                <div class="image-placeholder">
+                    <div class="icon">🌟</div>
+                    <div>[ IMAGE: Non-Sporting Dog ]</div>
+                </div>
+                <div class="content">
+                    <h4>Non-Sporting Group</h4>
+                    <p><strong>Examples:</strong> Poodle, Bulldog, Dalmatian</p>
+                    <p><strong>Attributes:</strong> Diverse in size, coat, and temperament</p>
+                    <p><strong>Uses:</strong> Primarily companionship</p>
+                </div>
+            </div>
+
+            <!-- Herding -->
+            <div class="breed-card">
+                <div class="image-placeholder">
+                    <div class="icon">🐑</div>
+                    <div>[ IMAGE: Herding Dog ]</div>
+                </div>
+                <div class="content">
+                    <h4>Herding Group</h4>
+                    <p><strong>Examples:</strong> German Shepherd, Border Collie, Corgi</p>
+                    <p><strong>Attributes:</strong> Highly intelligent, agile, intense focus</p>
+                    <p><strong>Uses:</strong> Livestock herding, police, service work</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 4: IMAGE REQUIREMENTS -->
+    <section id="images">
+        <h2>Chapter 4: Visual Documentation & Image Requirements</h2>
+        <p>High-quality photography is essential in dog breeding for breed identification, conformation evaluation, ethical marketing, and educational purposes.</p>
+
+        <h3>Standard Image Angles</h3>
+        <div class="image-grid">
+            <div class="image-placeholder">
+                <div class="icon">📷</div>
+                <div>[ IMAGE: Profile / Side View ]</div>
+                <div class="caption">The Profile View - Evaluates proportions and topline</div>
+            </div>
+            <div class="image-placeholder">
+                <div class="icon">📸</div>
+                <div>[ IMAGE: Front View ]</div>
+                <div class="caption">The Front View - Assesses chest width and symmetry</div>
+            </div>
+            <div class="image-placeholder">
+                <div class="icon">🎞️</div>
+                <div>[ IMAGE: Rear View ]</div>
+                <div class="caption">The Rear View - Evaluates hindquarters and tail set</div>
+            </div>
+            <div class="image-placeholder">
+                <div class="icon">🔍</div>
+                <div>[ IMAGE: Head Close-up ]</div>
+                <div class="caption">The Headshot - Shows expression and ear carriage</div>
+            </div>
+        </div>
+
+        <h3>Lighting and Posture Guidelines</h3>
+        <ul>
+            <li><strong>Lighting:</strong> Natural, diffused daylight is preferred to reveal true coat texture and color</li>
+            <li><strong>Stacking:</strong> The dog must stand squarely with weight evenly distributed on all four feet</li>
+            <li><strong>Coat Texture:</strong> Close-up shots should differentiate between wiry, silky, double, or curly coats</li>
+            <li><strong>Movement:</strong> Action shots should demonstrate reach, drive, and correct gait</li>
+        </ul>
+
+        <div class="image-placeholder">
+            <div class="icon">✨</div>
+            <div>[ IMAGE SPACE: Properly stacked dog showing breed standard conformation ]</div>
+            <div class="caption">Figure 4.1: A dog properly "stacked" for conformation evaluation against breed standards</div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 5: PRACTICAL BREEDING -->
+    <section id="practice">
+        <h2>Chapter 5: Practical Dog Breeding and Management</h2>
+
+        <h3>Selection of Quality Breeding Stock</h3>
+        <p>Quality breeding dogs must be evaluated across four pillars: health/genetic soundness, temperament, conformation, and pedigree/age.</p>
+
+        <div class="image-placeholder">
+            <div class="icon">📋</div>
+            <div>[ IMAGE: Breeder evaluating a dog / reviewing pedigree documents ]</div>
+            <div class="caption">Figure 5.1: Evaluating conformation and health clearances in breeding stock</div>
+        </div>
+
+        <h3>Gestation and Pregnancy Care</h3>
+        <p>The average gestation period is 63 days. Veterinary monitoring through ultrasound (day 28) and X-ray (day 45-50) is essential.</p>
+
+        <div class="image-placeholder">
+            <div class="icon">🩺</div>
+            <div>[ IMAGE: Pregnant dog / Veterinary ultrasound or X-ray ]</div>
+            <div class="caption">Figure 5.2: Veterinary monitoring during gestation</div>
+        </div>
+
+        <h3>Whelping and Neonatal Care</h3>
+        <p>Proper preparation includes a whelping box with pig rails, sterile supplies, and temperature control. Puppies must receive colostrum within the first 24 hours.</p>
+
+        <div class="image-placeholder">
+            <div class="icon">🍼</div>
+            <div>[ IMAGE: Whelping box with mother and newborn puppies ]</div>
+            <div class="caption">Figure 5.3: A properly equipped whelping box ensuring puppy safety</div>
+        </div>
+
+        <h3>Nutrition and Veterinary Care</h3>
+        <p>Breeding dogs require premium nutrition, strict vaccination schedules, routine deworming, and annual comprehensive veterinary examinations.</p>
+
+        <div class="image-placeholder">
+            <div class="icon">🥣</div>
+            <div>[ IMAGE: Breeding dog being fed premium food / vet examination ]</div>
+            <div class="caption">Figure 5.4: Premium nutrition and preventative veterinary care</div>
+        </div>
+    </section>
+
+    <!-- VIDEO SECTION -->
+    <section id="video">
+        <h2>Advertisement / Educational Video</h2>
+        <div class="video-container">
+            <h3 style="color: #d4a373;">Learn More About Responsible Dog Breeding</h3>
+            <div class="video-placeholder">
+                <div style="font-size: 60px;">▶️</div>
+                <div style="margin-top: 15px;">[ VIDEO SPACE: Embed your educational dog breeding video here ]</div>
+                <div style="font-size: 13px; margin-top: 10px; font-style: italic;">
+                    Use: &lt;video src="your-video.mp4" controls&gt;&lt;/video&gt;<br>
+                    Or embed YouTube: &lt;iframe src="youtube-link"&gt;&lt;/iframe&gt;
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 6: ETHICS -->
+    <section id="ethics">
+        <h2>Chapter 6: Challenges and Ethical Considerations</h2>
+
+        <h3>Common Health Issues in Purebreds</h3>
+        <ul>
+            <li><strong>Brachycephalic Airway Syndrome:</strong> Breathing issues in flat-faced breeds</li>
+            <li><strong>Orthopedic Issues:</strong> Hip and elbow dysplasia in large breeds</li>
+            <li><strong>Neurological Defects:</strong> Conditions like Syringomyelia in certain breeds</li>
+        </ul>
+
+        <div class="image-placeholder">
+            <div class="icon">⚕️</div>
+            <div>[ IMAGE: Veterinary X-ray showing hip dysplasia comparison ]</div>
+            <div class="caption">Figure 6.1: Health testing is critical in ethical breeding</div>
+        </div>
+
+        <h3>The Problem of Overpopulation</h3>
+        <p>Backyard breeders and puppy mills contribute to pet overpopulation, leading to millions of dogs being euthanized annually in shelters worldwide.</p>
+
+        <div class="image-placeholder">
+            <div class="icon">🏠</div>
+            <div>[ IMAGE: Contrast between puppy mill and ethical kennel ]</div>
+            <div class="caption">Figure 6.2: The stark contrast between unethical and ethical breeding conditions</div>
+        </div>
+
+        <h3>Promoting Responsible Breeding</h3>
+        <ul>
+            <li>Mandatory health testing before breeding</li>
+            <li>Improving the breed, not just producing puppies</li>
+            <li>Lifetime contracts with spay/neuter agreements</li>
+            <li>Thorough screening and education of puppy buyers</li>
+        </ul>
+
+        <div class="image-placeholder">
+            <div class="icon">🤝</div>
+            <div>[ IMAGE: Ethical breeder handing puppy to new owner with documents ]</div>
+            <div class="caption">Figure 6.3: Ethical breeders provide comprehensive health records and contracts</div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contact Me</h2>
+                <div class="profile-picture">YOUR<br>PHOTO</div>
+                <p><strong>Full Name:</strong> AMUND OLAYINKA IYIOLA</p>
+                <p><strong>📍 Address:</strong> Jaleyemi, Osogbo, Osun State, Nigeria</p>
+                <p><strong>📞 Phone:</strong> <a href="tel:+2348148742946">08148742946 (MTN)</a></p>
+                <p><strong>📱 WhatsApp:</strong> <a href="https://wa.me/2348068579570" target="_blank">+234 806 857 9570</a></p>
+                <p><strong>✉️ Email:</strong> <a href="mailto:OLAYINKAAMUND44@gmail.com">OLAYINKAAMUND44@gmail.com</a></p>
+
+                <a href="https://wa.me/2348068579570" class="whatsapp-btn" target="_blank">💬 Chat on WhatsApp</a>
+
+                <div class="social-links">
+                    <a href="https://www.instagram.com/Amund_498" target="_blank">📷 Instagram</a>
+                    <a href="https://t.me/" target="_blank">✈️ Telegram</a>
+                    <a href="https://facebook.com/AmundOlayinka" target="_blank">📘 Facebook</a>
+                    <a href="https://twitter.com/VeronicaSt72872" target="_blank">🐦 X (Twitter)</a>
+                </div>
+
+                <div class="barcode-section">
+                    <h3 style="color: #d4a373; margin-top: 25px;">Scan for Contact Info</h3>
+                    <div class="barcode-placeholder">
+                        <div style="color: #4a2c1a; padding: 30px;">
+                            [ QR CODE / BARCODE SPACE ]<br>
+                            <small>Scan to access contact details</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h2 style="color: white; border-bottom-color: #d4a373;">Get In Touch</h2>
+                <p style="margin-bottom: 20px;">Have questions about dog breeding, breed attributes, or image requirements? Feel free to reach out through any of the channels provided.</p>
+                <form style="display: flex; flex-direction: column; gap: 15px;">
+                    <input type="text" placeholder="Your Name" style="padding: 12px; border-radius: 5px; border: none; font-size: 15px;">
+                    <input type="email" placeholder="Your Email" style="padding: 12px; border-radius: 5px; border: none; font-size: 15px;">
+                    <textarea placeholder="Your Message" rows="5" style="padding: 12px; border-radius: 5px; border: none; font-size: 15px;"></textarea>
+                    <button type="submit" style="padding: 12px; background: #d4a373; color: #3a2214; border: none; border-radius: 5px; font-weight: bold; font-size: 16px; cursor: pointer;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Dog Breeding Project | Designed by AMUND OLAYINKA IYIOLA</p>
+        <p style="margin-top: 8px; font-size: 12px;">Jaleyemi, Osogbo, Osun State, Nigeria</p>
+    </footer>
+
+    <!-- JAVASCRIPT FOR SMOOTH SCROLLING -->
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
