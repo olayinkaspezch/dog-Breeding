@@ -5,10 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dog Breeding Project - Types, Attributes & Image Requirements</title>
     <style>
+        /* ===== Clean framed image (fixes misplacement) ===== */
+.figure {
+    margin: 25px auto;
+    max-width: 700px;            /* keeps it centered & tidy */
+    border-radius: 12px;
+    overflow: hidden;            /* clips image to rounded corners */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    background: #fff;
+    border: 2px solid #d4a373;
+}
+
+.figure .figure-img {
+    width: 100%;
+    height: 340px;               /* FIXED height = no stretching */
+    object-fit: cover;           /* crops to fill, looks normal */
+    display: block;
+}
+
+.figure .figure-caption {
+    padding: 12px 18px;
+    font-size: 14px;
+    font-style: italic;
+    text-align: center;
+    color: #4a2c1a;
+    background: #f5f1e8;
+    border-top: 1px solid #d4a373;
+}
         /* Real image styling */
 .real-img {
-    width: 100%;
-    height: 220px;        
+    width: 200%;
+    height: 320px;        
     object-fit: cover;    
     display: block;
     border-radius: 0;
@@ -409,7 +436,7 @@
     <!-- HEADER WITH LOGO SPACE -->
     <header>
         <div style="display: flex; align-items: center;">
-            <div class="logo-space">YOUR<br>LOGO</div>
+            <div class="logo-space">AMUND<br>BREEDS</div>
             <div class="site-title">Dog Breeding <span>Project</span></div>
         </div>
         <div style="font-size: 14px;">By AMUND OLAYINKA IYIOLA</div>
@@ -418,14 +445,14 @@
     <!-- NAVIGATION WITH SHORTCUT KEYS -->
     <nav>
         <ul>
-            <li><a href="#home" accesskey="1">Home <span class="shortcut">Alt+1</span></a></li>
-            <li><a href="#about" accesskey="2">About <span class="shortcut">Alt+2</span></a></li>
-            <li><a href="#breeds" accesskey="3">Breeds <span class="shortcut">Alt+3</span></a></li>
-            <li><a href="#images" accesskey="4">Images <span class="shortcut">Alt+4</span></a></li>
-            <li><a href="#video" accesskey="5">Video <span class="shortcut">Alt+5</span></a></li>
-            <li><a href="#practice" accesskey="6">Practice <span class="shortcut">Alt+6</span></a></li>
-            <li><a href="#ethics" accesskey="7">Ethics <span class="shortcut">Alt+7</span></a></li>
-            <li><a href="#contact" accesskey="8">Contact <span class="shortcut">Alt+8</span></a></li>
+            <li><a href="#home" accesskey="1">Home <span class="shortcut"></span></a></li>
+            <li><a href="#about" accesskey="2">About <span class="shortcut"></span></a></li>
+            <li><a href="#breeds" accesskey="3">Breeds <span class="shortcut"></span></a></li>
+            <li><a href="#images" accesskey="4">Images <span class="shortcut"></span></a></li>
+            <li><a href="#video" accesskey="5">Video <span class="shortcut"></span></a></li>
+            <li><a href="#practice" accesskey="6">Practice <span class="shortcut"></span></a></li>
+            <li><a href="#ethics" accesskey="7">Ethics <span class="shortcut"></span></a></li>
+            <li><a href="#contact" accesskey="8">Contact <span class="shortcut"></span></a></li>
         </ul>
     </nav>
 
